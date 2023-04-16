@@ -1,4 +1,6 @@
-﻿namespace CsStatTracker.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CsStatTracker.Models
 {
     public class Members
     {
@@ -21,6 +23,7 @@
         /// <summary>
         /// The member ID that is used to organize members.
         /// </summary>
+        [Key]
         public int MemberID { get; set; }
     }
 }
