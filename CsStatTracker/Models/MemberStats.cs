@@ -1,7 +1,11 @@
-﻿namespace CsStatTracker.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CsStatTracker.Models
 {
     public class MemberStats
     {
+        [Key]
+        public int MemberID { get; set; }
         /// <summary>
         /// The amount of eliminations a player has in Counter-Strike.
         /// </summary>
