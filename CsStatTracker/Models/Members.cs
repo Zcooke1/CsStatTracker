@@ -33,6 +33,12 @@ namespace CsStatTracker.Models
     public class RegisterViewModel
     {
         /// <summary>
+        /// UserName is required so that the user can be looked up in the search function.
+        /// </summary>
+        [Required]
+        [StringLength(64)]
+        public string UserName { get; set;}
+        /// <summary>
         /// Email is required and the maximum characters can be up to 100.
         /// The only current validation is that the email must require an @ sign.
         /// </summary>
