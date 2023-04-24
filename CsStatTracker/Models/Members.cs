@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace CsStatTracker.Models
 {
@@ -19,14 +21,14 @@ namespace CsStatTracker.Models
         /// <summary>
         /// The phone number that the member registers with.
         /// </summary>
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
         /// <summary>
         /// The member ID that is used to organize members.
         /// </summary>
         [Key]
         public int MemberID { get; set; }
     }
-    
+
     /// <summary>
     /// ViewModel To allow a register page to be linked with the members controller.
     /// </summary>
@@ -37,7 +39,12 @@ namespace CsStatTracker.Models
         /// </summary>
         [Required]
         [StringLength(64)]
-        public string UserName { get; set;}
+        public string UserName { get; set; }
+        /// <summary>
+        /// The users phone number that optionally, they can register with.
+        /// </summary>
+        [StringLength(13)]
+        public string? Phone { get; set; }
         /// <summary>
         /// Email is required and the maximum characters can be up to 100.
         /// The only current validation is that the email must require an @ sign.
@@ -92,4 +99,5 @@ namespace CsStatTracker.Models
         [DataType(DataType.Password)]
         public string Password { get; set; } = null!;
     }
+
 }

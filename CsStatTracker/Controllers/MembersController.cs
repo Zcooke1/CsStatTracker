@@ -70,5 +70,33 @@ namespace CsStatTracker.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var member = new Members
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    Password = model.Password,
+                    Phone = model.Phone,
+                };
+
+                _context.Members.Add(member); // Prepares insert
+                await _context.SaveChangesAsync(); // Executes pending insert
+
+
+                ViewData["Message"] = $"{member.UserName} was added successfully.";
+
+                return View();
+            }
+            return View(model);
+        }
     }
 }
