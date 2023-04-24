@@ -25,7 +25,8 @@ namespace CsStatTracker.Controllers
                 Members newMember = new()
                 {
                     Email = registerModel.Email,
-                    Password = registerModel.Password
+                    Password = registerModel.Password,
+                    UserName = registerModel.UserName,
                 };
                 _context.Members.Add(newMember);
                 await _context.SaveChangesAsync();
