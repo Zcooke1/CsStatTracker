@@ -1,5 +1,7 @@
 using CsStatTracker.Data;
 using Microsoft.EntityFrameworkCore;
+using RestSharp;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 

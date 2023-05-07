@@ -1,0 +1,40 @@
+﻿@model MemberStats
+
+@{
+	ViewData["Title"] = "Get Stats";
+}
+
+<h2>@Model.Username Stats</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Eliminations</th>
+            <th>Deaths</th>
+            <th>Assists</th>
+            <th>Win Rate</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Headshot %</th>
+            <th>Effective Flashes</th>
+            <th>Utility Damage</th>
+            <th>ADR</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Rank</td>
+            <td>@Model.Eliminations</td>
+            <td>@Model.Deaths</td>
+            <td>@Model.Assists</td>
+            <td>@Model.WinRate</td>
+            <td>@Model.Wins</td>
+            <td>@Model.Losses</td>
+            <td>@Model.HeadShotPercent</td>
+            <td>@Model.EffectiveFlashes</td>
+            <td>@Model.UtilityDMG</td>
+            <td>@Model.ADR</td>
+        </tr>
+    </tbody>
+</table>
