@@ -11,6 +11,6 @@ namespace CsStatTracker.Data
 
         }
         public DbSet<Members> Members { get; set; }
-        public DbSet<MemberStats> MemberStats { get; set; }
+        public DbSet<Segments> MemberStats { get; set; }
     }
 }
