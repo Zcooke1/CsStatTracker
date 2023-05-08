@@ -8,11 +8,18 @@ using CsStatTracker.Models;
 
 namespace CsStatTracker.Controllers
 {
-    public class ApiResponse<T>
+    
+
+    public class ApiResponse
     {
-        public string ErrorCode { get; set; }
-        public string ErrorMessage { get; set; }
-        public T Data { get; set; }
+       public Data Data { get; set; }
+        
+    }
+    public class Data
+    {
+        public platformInfo platformInfo { get; set; }
+        public List<Segments> Segments { get; set; }
+        
     }
     public class StatsController : Controller
     {
@@ -37,28 +44,27 @@ namespace CsStatTracker.Controllers
             var request = new RestRequest($"https://public-api.tracker.gg/v2/csgo/standard/profile/steam/{steamId}", Method.Get);
             request.AddHeader("TRN-Api-Key", _trackerApiKey);
             var response = await _client.ExecuteAsync(request);
-            var content = JsonConvert.DeserializeObject<ApiResponse<MemberStats>>(response.Content);
+            var content = JsonConvert.DeserializeObject<ApiResponse>(response.Content);
             
 
             var statsViewModel = new StatsViewModel();
             if(content.Data != null)
             {
-                statsViewModel.SteamID = content.Data.SteamID;
-                statsViewModel.Username = content.Data.Username;
-                statsViewModel.Rank = content.Data.Rank;
-                statsViewModel.Eliminations = content.Data.Eliminations;
-                statsViewModel.Deaths = content.Data.Deaths;
-                statsViewModel.Assists = content.Data.Assists;
-                statsViewModel.WinRate = content.Data.WinRate;
-                statsViewModel.Wins = content.Data.Wins;
-                statsViewModel.Losses = content.Data.Losses;
-                statsViewModel.HeadShotPercent = content.Data.HeadShotPercent;
-                statsViewModel.EffectiveFlashes = content.Data.EffectiveFlashes;
-                statsViewModel.UtilityDMG = content.Data.UtilityDMG;
-                statsViewModel.ADR = content.Data.ADR;
+                statsViewModel.SteamID = content.Data.platformInfo.platformUserId;
+                statsViewModel.Username = content.Data.platformInfo.platformUserHandle;
+                statsViewModel.Wins = content.Data.Segments[0].stats.wins.value;
+                statsViewModel.Losses = content.Data.Segments[0].stats.losses.value;
+                statsViewModel.WinRate = content.Data.Segments[0].stats.wlPercentage.value;
+                statsViewModel.RoundsPlayed = content.Data.Segments[0].stats.roundsPlayed.value;
+                statsViewModel.RoundsWon = content.Data.Segments[0].stats.roundsWon.value;
+                statsViewModel.Damage = content.Data.Segments[0].stats.damage.value;
+                statsViewModel.HeadShotPercent = content.Data.Segments[0].stats.headshotPct.value;
+                
+
+                
             };
 
-            return View(content.Data);
+            return View(statsViewModel);
         }
 
 
