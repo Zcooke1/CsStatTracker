@@ -30,7 +30,7 @@ namespace CsStatTracker.Controllers
 
         public StatsController(IConfiguration configuration)
         {
-            _trackerApiKey = configuration.GetSection("TrackerApiKey")["ApiKey"];
+            _trackerApiKey = configuration.GetSection("TrackerApiKey")["UserSecret"];
             _client = new RestClient("https://public-api.tracker.gg/v2/csgo/standard/profile/");
         }
 
