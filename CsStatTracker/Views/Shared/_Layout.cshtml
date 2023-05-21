@@ -7,10 +7,43 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CsStatTracker.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background: linear-gradient(to bottom, #002147, #00091a);
+            color: #fff;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #337ab7; /* Lighter blue color */
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+        }
+        
+        
+
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CsStatTracker</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -34,7 +67,7 @@
                     </ul>
                     <form class="d-flex" asp-area="" asp-controller="Stats" asp-action="MemberStats" method="get">
                         <input class="form-control me-2" type="search" placeholder="Search Steam ID" aria-label="Search" name="steamId">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-success btn-custom" type="submit">Search</button>
                     </form>
                 </div>
             </div>
