@@ -1,34 +1,46 @@
 ﻿@model StatsViewModel
 
 @{
-	ViewData["Title"] = "Get Stats";
+    ViewData["Title"] = "Get Stats";
 }
 
-<h2>@Model.Username's Stats</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>@Model.Username's Stats</h2>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Win Rate</th>
+                    <th>Damage</th>
+                    <th>Headshot %</th>
+                    <th>Rounds Played</th>
+                    <th>Rounds Won</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Wins</td>
+                    <td>@Model.Losses</td>
+                    <td>@Model.WinRate</td>
+                    <td>@Model.Damage</td>
+                    <td>@Model.HeadShotPercent</td>
+                    <td>@Model.RoundsPlayed</td>
+                    <td>@Model.RoundsWon</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Wins</th>
-            <th>Losses</th>
-            <th>WinRate</th
-            <th>Damage</th>
-            <th>Headshot %</th>
-            <th>Rounds Played</th>
-            <th>Rounds Won</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>@Model.Wins</td>
-            <td>@Model.Losses</td>
-            <td>@Model.WinRate</td>
-            <td>@Model.Damage</td>
-            <td>@Model.HeadShotPercent</td>
-            <td>@Model.RoundsPlayed</td>
-            <td>@Model.RoundsWon</td>
-
-        </tr>
-    </tbody>
-</table>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
