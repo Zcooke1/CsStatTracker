@@ -35,8 +35,12 @@
 
         .navbar-light .navbar-nav .nav-link {
             color: #fff;
+            border-bottom-color: black;
+            
         }
-        
+        .footer{
+            border-top-color: black;
+        }
         
 
     </style>
@@ -53,16 +57,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Register">Register</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Members" asp-action="Register">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Login">Log in</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Members" asp-action="Login">Log in</a>
                         </li>
                     </ul>
                     <form class="d-flex" asp-area="" asp-controller="Stats" asp-action="MemberStats" method="get">
