@@ -1,13 +1,17 @@
 ﻿using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace CsStatTracker.Models
 {
+    
     public class Segments
     {
+        
         public platformInfo platformInfo { get; set; }
+        
         public Stats stats { get; set; }
     }
     public class Stats

@@ -10,7 +10,11 @@
   <ItemGroup>
     <Compile Remove="Controllers\HomeController1.cs" />
   </ItemGroup>
-
+	
+	<ItemGroup>
+		<None Include="wwwroot\*" />
+	</ItemGroup>
+	
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
@@ -29,7 +33,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Img\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Img\cs_go_update.jpeg" />
+    <None Include="wwwroot\Img\damage-icon.png" />
+    <None Include="wwwroot\Img\headshot-icon.png" />
+    <None Include="wwwroot\Img\winrate-icon.png" />
   </ItemGroup>
 
 </Project>
