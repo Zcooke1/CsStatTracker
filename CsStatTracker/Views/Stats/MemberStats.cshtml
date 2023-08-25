@@ -4,16 +4,15 @@
     ViewData["Title"] = "Get Stats";
 }
 
-<!DOCTYPE html>
-<html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@ViewData["Title"]</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    
+    
 </head>
-<body>
+
     <div class="container">
         <h2 class="text-white">@Model.Username's Stats</h2>
         <img src="~/Img/winrate-icon.png" />
@@ -34,19 +33,19 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>@Model.Wins</td>
-                    <td>@Model.Losses</td>
-                    <td>@Model.WinRate</td>
-                    <td>@Model.Damage</td>
-                    <td>@Model.HeadShotPercent</td>
-                    <td>@Model.RoundsPlayed</td>
-                    <td>@Model.RoundsWon</td>
+                    <td id="Wins">@Model.Wins</td>
+                    <td id="Losses">@Model.Losses</td>
+                    <td id="Winrate">@Model.WinRate</td>
+                    <td id="Damage">@Model.Damage</td>
+                    <td id="HSP">@Model.HeadShotPercent</td>
+                    <td id="RoundsPlayed">@Model.RoundsPlayed</td>
+                    <td id="RoundsWon">@Model.RoundsWon</td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <canvas id="myChart"></canvas>
-    <script src="~/js/site.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+    <button id="btnGraph" class=" btn btn-success btn-custom">Show Graph</button>
+    <div style="width: 800px;"><canvas id="pieChart"></canvas></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    

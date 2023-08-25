@@ -1,64 +1,70 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
+function getProfileStats() {
+   /* const response = await fetch(api_url, {
+        headers: {
+            'TRN-Api-Key': api_key
+        }
+    });
 
-// Write your JavaScript code.
-const api_url =
-    "https://public-api.tracker.gg/v2/csgo/standard/profile/{platform}/{platformUserIdentifier}";
+    const data = await response.json();
 
-async function getapi(url) {
-
-    //storing response
-    const response = await fetch(url);
-
-    //Storing data in form of JSON
-    var data = await response.json();
-    console.log(data);
-    if (response) {
+    if (response.ok) {
         hideloader();
+        showProfileStats(data.data); // Assuming data.data contains profile stats
+    } else {
+        console.log("API request failed.");
+    }*/
+
+    let ProfileStats = {
     }
-    show(data);
+    ProfileStats.Wins = parseInt(document.getElementById('Wins').innerHTML);
+    ProfileStats.Losses = parseInt(document.getElementById('Losses').innerHTML);
+    ProfileStats.Winrate = parseInt(document.getElementById('Winrate').innerHTML);
+    ProfileStats.Damage = parseInt(document.getElementById('Damage').innerHTML);
+    ProfileStats.HSP = parseInt(document.getElementById('HSP').innerHTML);
+    ProfileStats.RoundsPlayed = parseInt(document.getElementById('RoundsPlayed').innerHTML);
+    ProfileStats.RoundsWon = parseInt(document.getElementById('RoundsWon').innerHTML);
+    //console.log(ProfileStats);
+
+    return ProfileStats;
 }
 
-//Calling that async function
-getapi(api_url);
 
-//Function to hide the loader
-function hideloader() {
-    document.getElementById('loading').style.display = 'none';
+function showProfileStats(profileData) {
+
+    console.log(profileData)
+    createChart([{ Label: 'Wins', Count: profileData.Wins }, { Label: 'Losses', Count: profileData.Losses },
+    ]);
 }
 
-//Function to define innerHTML for HTML table
-getapi().then(data => {
-    // Call the function to create the chart with the fetched data
-    createChart(data);
-});
-
-// script.js
-
-function createChart(data) {
-    const labels = data.map(item => item.label); // Assuming your data has labels
-    const values = data.map(item => item.value); // Assuming your data has corresponding values
-
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'line',
+function createChart(segments) {
+    // Assuming segments contains the necessary data for chart
+    // Extract labels and values from the segments
+    const labels = segments.map(segment => segment.Label);
+    const values = segments.map(segment => segment.Count);
+    console.log(labels);
+    console.log(values);
+    new Chart(document.getElementById('pieChart'), {
+        type: 'pie',
         data: {
             labels: labels,
             datasets: [{
-                label: 'API Data',
+                label: 'Wins and Losses',
                 data: values,
-                borderColor: 'rgb(75, 192, 192)',
-                fill: false,
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54,162, 235)',
+                ],
+                hoverOffset: 4
+                
             }]
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
+        
     });
 }
+
+
+
+document.getElementById('btnGraph').onclick = function () {
+    showProfileStats(getProfileStats());
+};
